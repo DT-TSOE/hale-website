@@ -723,3 +723,42 @@ a.proof__client:hover { background: var(--secondary); }
 .gold-cta p { margin-inline: 0; }
 .gold-cta__cta { justify-content: flex-start; }
 @media (min-width: 900px) { .gold-cta__cta { justify-content: flex-end; } }
+
+/* ============================================================
+   HOMEPAGE REFINEMENTS — July 2026
+   ============================================================ */
+
+/* --- Service tiles: gold line-icon so tiles aren't empty boxes --- */
+.svc2__tile { position: relative; overflow: hidden; }
+.svc2__ico { width: 32px; height: 32px; color: var(--gold); margin-bottom: auto; display: block; }
+.svc2__ico svg { width: 100%; height: 100%; display: block; }
+.svc2 > a:nth-child(1) .svc2__ico { width: 44px; height: 44px; }
+.svc2__tile::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s var(--ease); background: radial-gradient(130% 90% at 100% 0%, var(--gold-glow), transparent 55%); }
+.svc2__tile:hover::after { opacity: 1; }
+
+/* --- Team credentials: icon cards instead of a plain bullet list --- */
+.team2__pts { grid-template-columns: 1fr; gap: .7rem; }
+@media (min-width: 560px) { .team2__pts { grid-template-columns: 1fr 1fr; } }
+.team2__pts li { display: grid; grid-template-columns: auto 1fr; gap: .85rem; align-items: flex-start; padding: 1rem 1.1rem; border: 1px solid var(--border); border-bottom: 1px solid var(--border); border-radius: var(--radius); background: rgba(15,15,15,.5); transition: border-color .25s var(--ease), transform .25s var(--ease), background .25s var(--ease); }
+.team2__pts li:hover { border-color: var(--gold); transform: translateY(-2px); background: rgba(22,22,22,.6); }
+.team2__pts li::before { content: none; }
+.team2__pts .pt-ico { width: 22px; height: 22px; color: var(--gold); flex-shrink: 0; margin-top: .1rem; }
+.team2__pts .pt-ico svg { width: 100%; height: 100%; display: block; }
+.team2__pts li span:last-child { color: var(--fg-dim); font-size: var(--fs-sm); line-height: 1.4; }
+
+/* --- Proof: warm depth + hero stat + category labels --- */
+.proof2__glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(48% 55% at 82% 8%, var(--gold-glow), transparent 60%); }
+.proof2__hero { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1.6rem; margin: clamp(1.8rem,3.5vw,2.6rem) 0 clamp(1.4rem,3vw,2rem); }
+.proof2__hero .num { font-family: var(--font-display); font-weight: 700; color: var(--gold); font-size: clamp(3.4rem,8.5vw,6.4rem); line-height: .88; letter-spacing: -.02em; }
+.proof2__hero .cap { color: var(--fg-dim); font-size: var(--fs-lede); line-height: 1.45; max-width: 30ch; }
+.proof2__cell { position: relative; transition: background .3s var(--ease); }
+.proof2__cell:hover { background: var(--surface); }
+.proof2__cat { display: block; margin-top: .5rem; color: var(--gold-deep); font-family: var(--font-body); font-weight: 700; font-size: .64rem; letter-spacing: .11em; text-transform: uppercase; }
+
+/* --- Audit: device mockup so the section reads visual, not wordy --- */
+.audit2__device { position: relative; z-index: 1; }
+.device { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #0d0d0d; box-shadow: 0 34px 70px -34px rgba(0,0,0,.85); }
+.device__bar { display: flex; align-items: center; gap: .45rem; padding: .7rem .9rem; background: #141414; border-bottom: 1px solid var(--border); }
+.device__bar i { width: 10px; height: 10px; border-radius: 50%; background: #2a2a2a; display: block; }
+.device__bar span { margin-left: .6rem; color: var(--fg-faint); font-size: .72rem; letter-spacing: .02em; }
+.device__screen { display: block; width: 100%; height: auto; }
