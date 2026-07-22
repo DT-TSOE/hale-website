@@ -773,3 +773,51 @@ a.proof__client:hover { background: var(--secondary); }
 @media (min-width: 900px) { .proof2__top { grid-template-columns: 1fr auto; align-items: center; gap: clamp(2.5rem,6vw,5rem); } }
 .proof2__top .proof2__hero { margin: 0; }
 @media (min-width: 900px) { .proof2__hero { flex-direction: column; align-items: flex-end; text-align: right; gap: .7rem; } .proof2__hero .cap { max-width: 32ch; } }
+
+/* ============================================================
+   SERVICES PAGE (redesign — reused across similar pages)
+   ============================================================ */
+
+/* Animated aurora background — gentle drift, distinct from the homepage's particles/lines */
+.svc-section { position: relative; overflow: hidden; }
+.svc-section > .shell { position: relative; z-index: 1; }
+.svc-aurora { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.svc-aurora span { position: absolute; display: block; border-radius: 50%; filter: blur(70px); }
+.svc-aurora .a1 { width: 46vw; height: 46vw; max-width: 620px; max-height: 620px; left: -8vw; top: -14vw; background: radial-gradient(circle, rgba(211,166,69,.13), transparent 68%); animation: svcDrift1 24s ease-in-out infinite; }
+.svc-aurora .a2 { width: 38vw; height: 38vw; max-width: 520px; max-height: 520px; right: -6vw; top: 22%; background: radial-gradient(circle, rgba(178,64,32,.10), transparent 68%); animation: svcDrift2 30s ease-in-out infinite; }
+.svc-aurora .a3 { width: 34vw; height: 34vw; max-width: 460px; max-height: 460px; left: 40%; bottom: -16vw; background: radial-gradient(circle, rgba(211,166,69,.10), transparent 68%); animation: svcDrift3 27s ease-in-out infinite; }
+@keyframes svcDrift1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(7vw,5vw); } }
+@keyframes svcDrift2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-6vw,4vw); } }
+@keyframes svcDrift3 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(4vw,-6vw); } }
+@media (prefers-reduced-motion: reduce) { .svc-aurora span { animation: none; } }
+
+/* What We Do — two-column intro (left-aligned) + a row of the jobs */
+.svc-intro { display: grid; gap: 1.4rem; }
+@media (min-width: 900px) { .svc-intro { grid-template-columns: 1.1fr .9fr; gap: clamp(2rem,5vw,4.5rem); align-items: end; } .svc-intro .prose { max-width: 46ch; } }
+.svc-jobs { list-style: none; padding: 0; margin: clamp(2.4rem,5vw,3.6rem) 0 0; display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+@media (min-width: 560px) { .svc-jobs { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1040px) { .svc-jobs { grid-template-columns: repeat(5,1fr); } }
+.svc-jobs li { background: var(--bg); padding: clamp(1.2rem,2vw,1.55rem); display: grid; gap: .6rem; align-content: start; transition: background .3s var(--ease); }
+.svc-jobs li:hover { background: var(--surface); }
+.svc-jobs .ji { width: 26px; height: 26px; color: var(--gold); }
+.svc-jobs h3 { font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--fg); line-height: 1.2; }
+.svc-jobs p { color: var(--fg-dim); font-size: .84rem; line-height: 1.4; }
+
+/* Explore services — punched-up cards with icon + corner index + hover glow */
+.svc-card { position: relative; overflow: hidden; transition: border-color .25s var(--ease), transform .25s var(--ease); }
+a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+.svc-card__ico { width: 30px; height: 30px; color: var(--gold); margin-bottom: 1.1rem; }
+.svc-card .eyebrow { position: absolute; top: clamp(1.4rem,2.4vw,1.9rem); right: clamp(1.4rem,2.4vw,1.9rem); margin: 0; opacity: .45; }
+.svc-card .eyebrow::before { display: none; }
+.svc-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s var(--ease); background: radial-gradient(120% 80% at 100% 0%, var(--gold-glow), transparent 55%); }
+.svc-card:hover::after { opacity: 1; }
+.svc-card > * { position: relative; z-index: 1; }
+
+/* The Hale Difference — two cards side by side with visuals */
+.svc-diff { display: grid; gap: 1.2rem; }
+@media (min-width: 820px) { .svc-diff { grid-template-columns: 1fr 1fr; gap: clamp(1.4rem,3vw,2rem); } }
+.svc-diff__card { border: 1px solid var(--border); border-radius: var(--radius-lg,20px); background: rgba(15,15,15,.5); backdrop-filter: blur(6px); padding: clamp(1.8rem,3.5vw,2.8rem); display: grid; gap: 1rem; align-content: start; transition: border-color .25s var(--ease), transform .25s var(--ease); }
+.svc-diff__card:hover { border-color: var(--gold); transform: translateY(-3px); }
+.svc-diff__ico { width: 42px; height: 42px; color: var(--gold); }
+.svc-diff__card h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem,2.6vw,2rem); line-height: 1.1; color: var(--fg); letter-spacing: -.01em; margin: 0; }
+.svc-diff__card p { color: var(--fg-dim); font-size: var(--fs-sm); line-height: 1.6; margin: 0; }
