@@ -822,3 +822,13 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 .svc-diff__ico { width: 42px; height: 42px; color: var(--gold); }
 .svc-diff__card h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem,2.6vw,2rem); line-height: 1.1; color: var(--fg); letter-spacing: -.01em; margin: 0; }
 .svc-diff__card p { color: var(--fg-dim); font-size: var(--fs-sm); line-height: 1.6; margin: 0; }
+
+/* Service DETAIL page punch-ups (reusable across all service pages) */
+.svc-intro--top { align-items: start; }
+@media (min-width: 900px) { .svc-intro--top .prose { max-width: 52ch; } }
+.check-list--cards { grid-template-columns: 1fr; }
+@media (min-width: 640px) { .check-list--cards { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1000px) { .check-list--cards.cl-3 { grid-template-columns: repeat(3,1fr); } }
+.check-list--cards li { border: 1px solid var(--border); border-radius: var(--radius); background: rgba(15,15,15,.5); padding: clamp(1.3rem,2.4vw,1.7rem); transition: border-color .25s var(--ease), transform .25s var(--ease); }
+.check-list--cards li:hover { border-color: var(--gold); transform: translateY(-3px); }
+.check-list--cards li .ico { width: 24px; height: 24px; }
