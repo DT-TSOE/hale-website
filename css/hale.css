@@ -833,3 +833,24 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 .check-list--cards li:hover { border-color: var(--gold); transform: translateY(-3px); }
 .check-list--cards li .ico { width: 24px; height: 24px; }
 @media (min-width: 900px) { .model2--6 { grid-template-columns: repeat(6,1fr); } }
+
+/* Feature list -> icon card grid (reuses the site card look) */
+.feature-list { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 620px) { .feature-list { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1000px) { .feature-list { grid-template-columns: repeat(3,1fr); } }
+.feature-card { border: 1px solid var(--border); border-radius: var(--radius); background: rgba(15,15,15,.5); padding: clamp(1.3rem,2.4vw,1.7rem); display: grid; gap: .6rem; align-content: start; transition: border-color .25s var(--ease), transform .25s var(--ease); }
+.feature-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+.feature-card__ico { width: 26px; height: 26px; color: var(--gold); }
+.feature-card__ico svg { width: 100%; height: 100%; display: block; }
+.feature-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; color: var(--fg); line-height: 1.2; margin: 0; }
+.feature-card p { color: var(--fg-dim); font-size: .86rem; line-height: 1.45; margin: 0; }
+
+/* Related services condensed to a thin band */
+.svc-band-sec { padding-block: clamp(1.3rem,2.6vw,1.9rem) !important; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.svc-band { display: grid; gap: 1rem; }
+@media (min-width: 860px) { .svc-band { grid-template-columns: auto 1fr; align-items: center; gap: 2.2rem; } }
+.svc-band__label { color: var(--fg-dim); font-size: var(--fs-sm); font-weight: 600; margin: 0; }
+.svc-band__links { display: flex; flex-wrap: wrap; gap: .6rem; }
+.svc-band__links a { display: inline-flex; align-items: center; gap: .45em; padding: .5em 1.05em; border: 1px solid var(--border); border-radius: 999px; color: var(--fg); font-size: .85rem; font-weight: 500; transition: border-color .2s var(--ease), color .2s var(--ease), background .2s var(--ease); }
+.svc-band__links a::after { content: "\2192"; color: var(--gold); }
+.svc-band__links a:hover { border-color: var(--gold); color: var(--gold); background: rgba(211,166,69,.06); }
