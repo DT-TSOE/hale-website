@@ -832,3 +832,4 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 .check-list--cards li { border: 1px solid var(--border); border-radius: var(--radius); background: rgba(15,15,15,.5); padding: clamp(1.3rem,2.4vw,1.7rem); transition: border-color .25s var(--ease), transform .25s var(--ease); }
 .check-list--cards li:hover { border-color: var(--gold); transform: translateY(-3px); }
 .check-list--cards li .ico { width: 24px; height: 24px; }
+@media (min-width: 900px) { .model2--6 { grid-template-columns: repeat(6,1fr); } }
