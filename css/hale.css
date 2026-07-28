@@ -544,13 +544,24 @@ a.card:hover { border-color: rgba(211,166,69,0.5); }
 
 /* About: "What We Believe" icon chips */
 .check-list--belief li { grid-template-columns: auto 1fr; align-items: start; }
-.check-list--belief li .ico { width: 54px; height: 54px; padding: 13px; box-sizing: border-box; background: rgba(211,166,69,0.1); border: 1px solid rgba(211,166,69,0.22); border-radius: 13px; color: var(--gold); }
+.check-list--belief li .ico { width: 52px; height: 52px; padding: 12px; box-sizing: border-box; background: var(--gold); color: #0A0A0A; border-radius: 13px; }
 .check-list--belief li p { align-self: center; }
 
-/* About: "Our Experience" logo band header centered */
+/* About: "Our Experience" logo band header centered + full width */
 .marquee-band .sec-head { text-align: center; }
-.marquee-band .sec-head h2 { margin-inline: auto; }
+.marquee-band .sec-head h2 { margin-inline: auto; max-width: none; }
 .marquee-band .eyebrow { display: flex; justify-content: center; }
+
+/* About: "Led by people" clickable team grid with photos */
+.team-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; margin-top: clamp(1.6rem,3vw,2.4rem); }
+@media (min-width: 620px) { .team-grid { grid-template-columns: repeat(3,1fr); } }
+@media (min-width: 920px) { .team-grid { grid-template-columns: repeat(4,1fr); } }
+.team-member { display: block; text-align: center; padding: 1.5rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: rgba(15,15,15,.5); transition: border-color .25s var(--ease), transform .25s var(--ease), background .25s var(--ease); }
+.team-member:hover { border-color: var(--gold); transform: translateY(-4px); background: rgba(22,22,22,.6); }
+.team-member__photo { position: relative; width: 96px; height: 96px; margin: 0 auto 1rem; border-radius: 50%; overflow: hidden; background: var(--secondary); border: 1px solid var(--border); display: grid; place-items: center; color: var(--gold); font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; }
+.team-member__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.team-member__name { font-family: var(--font-display); font-weight: 600; color: var(--fg); font-size: 1.05rem; line-height: 1.2; }
+.team-member__role { color: var(--gold); font-size: .76rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; margin-top: .35rem; line-height: 1.3; }
 .form { display: grid; gap: 1.25rem; }
 .form label { display: block; font-size: .82rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--fg); margin-bottom: .5rem; }
 .form input[type=text], .form input[type=url], .form textarea, .form select {
