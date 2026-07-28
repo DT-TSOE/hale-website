@@ -517,6 +517,19 @@ a.card:hover { border-color: rgba(211,166,69,0.5); }
 .contact-intro .sec-head h2 { font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.18; max-width: 18ch; }
 .page-hero--tight { padding-bottom: clamp(1.4rem, 2.6vw, 2.2rem); }
 .contact-body { padding-top: clamp(1.25rem, 2.4vw, 2rem); }
+
+/* About: team cards with headshots */
+.team-card { display: flex; align-items: center; gap: 1.1rem; }
+.team-card__photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--border); background: var(--secondary); }
+/* About: "Our Experience" logo band — compact header like the homepage */
+.marquee-band .sec-head { margin-bottom: clamp(1.4rem,3vw,2rem); }
+.marquee-band .sec-head h2 { font-size: clamp(1.3rem, 2vw, 1.65rem); line-height: 1.2; letter-spacing: 0; }
+
+/* Team page: bio headshots */
+.bio__head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.1rem; }
+.bio__photo { width: 66px; height: 66px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--border); background: var(--secondary); }
+.bio__head .bio__name { font-size: 1.25rem; }
+.bio__head .bio__role { margin: .2rem 0 0; }
 .form { display: grid; gap: 1.25rem; }
 .form label { display: block; font-size: .82rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--fg); margin-bottom: .5rem; }
 .form input[type=text], .form input[type=url], .form textarea, .form select {
