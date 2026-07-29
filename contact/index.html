@@ -99,12 +99,31 @@
   <div><label for="cf-challenge">What's your main challenge or opportunity?</label><textarea id="cf-challenge" name="challenge"></textarea></div>
   <div><label>Which services are you most interested in?</label><div class="form__choices"><label><input type="checkbox" name="services" value="Marketing Strategy"> Marketing Strategy</label><label><input type="checkbox" name="services" value="Performance Marketing"> Performance Marketing</label><label><input type="checkbox" name="services" value="Organic Performance"> Organic Performance</label><label><input type="checkbox" name="services" value="SEO"> SEO</label><label><input type="checkbox" name="services" value="Website Development"> Website Development</label><label><input type="checkbox" name="services" value="Analytics &amp; Measurement"> Analytics &amp; Measurement</label><label><input type="checkbox" name="services" value="AI Search Optimization"> AI Search Optimization</label><label><input type="checkbox" name="services" value="Not sure yet"> Not sure yet</label></div></div>
   <div><label for="cf-budget">Approximate monthly marketing budget</label><select id="cf-budget" name="budget"><option>Under $5,000</option><option>$5,000 to $15,000</option><option>$15,000 to $50,000</option><option>$50,000 to $100,000</option><option>Over $100,000</option><option>Not sure yet</option></select></div>
+  <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden"><label>Leave this field empty<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label></div>
   <button class="btn btn--primary" type="submit">Book a Call <span class="arw" aria-hidden="true">→</span></button>
   <p class="form__note">A senior strategist reads every submission before anyone responds.</p>
   <div class="form__ok" id="cfOk">Thanks, we've got it. A senior strategist will review what you sent and reach out shortly.</div>
 </form>
         <script>
-(function(){var f=document.getElementById('contactForm');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();document.getElementById('cfOk').style.display='block';f.querySelector('button[type=submit]').disabled=true;});})();
+(function(){
+  /* Google Sheets endpoint: paste your Apps Script Web App URL (ends in /exec) */
+  var ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL";
+  var f = document.getElementById('contactForm'); if(!f) return;
+  var btn = f.querySelector('button[type=submit]');
+  var okMsg = document.getElementById('cfOk');
+  function finish(){ okMsg.style.display='block'; [].slice.call(f.elements).forEach(function(el){ el.disabled=true; }); btn.textContent='Sent'; }
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(f._hp && f._hp.value){ finish(); return; } /* honeypot: silently drop bots */
+    btn.disabled=true; btn.textContent='Sending…';
+    var data = new FormData(f);
+    data.set('services', [].slice.call(f.querySelectorAll('input[name=services]:checked')).map(function(c){return c.value;}).join(', '));
+    data.set('page', location.pathname);
+    data.set('submitted_at', new Date().toISOString());
+    if(!ENDPOINT || ENDPOINT.indexOf('PASTE_')===0){ finish(); return; } /* not configured yet */
+    fetch(ENDPOINT, { method:'POST', mode:'no-cors', body:data }).then(finish).catch(finish);
+  });
+})();
 </script>
       </div>
     </div>
