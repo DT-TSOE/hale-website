@@ -586,7 +586,7 @@ a.ind-card:hover { transform: translateY(-3px); }
 .sys-stage p { color: var(--fg-dim); font-size: var(--fs-sm); margin-top: .2rem; }
 .form { display: grid; gap: 1.25rem; }
 .form label { display: block; font-size: .82rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--fg); margin-bottom: .5rem; }
-.form input[type=text], .form input[type=url], .form textarea, .form select {
+.form input[type=text], .form input[type=email], .form input[type=tel], .form input[type=url], .form textarea, .form select {
   width: 100%; padding: .85rem 1rem; background: var(--secondary); border: 1px solid var(--border);
   border-radius: 10px; color: var(--fg); font: inherit; font-size: .95rem; }
 .form textarea { min-height: 120px; resize: vertical; }

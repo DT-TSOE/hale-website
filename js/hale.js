@@ -1,4 +1,24 @@
 /* Hale — progressive enhancement + generative canvas backgrounds. */
+
+/* First-touch attribution: capture UTM + referrer once, for the contact form / CRM. */
+(function () {
+  try {
+    var KEY = "hale_attribution";
+    if (localStorage.getItem(KEY)) return; // keep the first touch only
+    var q = new URLSearchParams(location.search);
+    localStorage.setItem(KEY, JSON.stringify({
+      utm_source: q.get("utm_source") || "",
+      utm_medium: q.get("utm_medium") || "",
+      utm_campaign: q.get("utm_campaign") || "",
+      utm_term: q.get("utm_term") || "",
+      utm_content: q.get("utm_content") || "",
+      referrer: document.referrer || "",
+      landing_page: location.pathname + location.search,
+      first_seen: new Date().toISOString()
+    }));
+  } catch (e) {}
+})();
+
 (function () {
   "use strict";
 
