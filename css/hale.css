@@ -1048,6 +1048,9 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 .svc-explore { display: grid; grid-template-columns: repeat(2,1fr); gap: .7rem; margin: clamp(1.3rem,2.6vw,1.9rem) auto 0; }
 @media (min-width: 560px) { .svc-explore { grid-template-columns: repeat(3,1fr); } }
 @media (min-width: 860px) { .svc-explore { grid-template-columns: repeat(5,1fr); } }
+/* 6-tile variant (pages outside the core-6 set, e.g. SEO, whose related grid lists all six) */
+@media (min-width: 560px) { .svc-explore--6 { grid-template-columns: repeat(3,1fr); } }
+@media (min-width: 980px) { .svc-explore--6 { grid-template-columns: repeat(6,1fr); } }
 .svc-explore a { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .6rem; padding: 1.15rem .9rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: rgba(15,15,15,.5); transition: border-color .25s var(--ease), transform .25s var(--ease), background .25s var(--ease); }
 .svc-explore a:hover { border-color: var(--gold); transform: translateY(-3px); background: rgba(22,22,22,.6); }
 .svc-explore .se-ico { width: 26px; height: 26px; color: var(--gold); flex-shrink: 0; }
