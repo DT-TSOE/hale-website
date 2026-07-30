@@ -991,7 +991,26 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
   .model2__stage::before { transform: none !important; animation: none; }
   .pm-pulse { display: none; }
 }
-.no-js .pm-zone,.no-js .pm-dot,.no-js .rd-ring,.no-js .rd-spoke,.no-js .rd-vtx,.no-js .rd-shape,.no-js .model2__dot { opacity: 1 !important; transform: none !important; }
+.no-js .pm-zone,.no-js .pm-dot,.no-js .rd-ring,.no-js .rd-spoke,.no-js .rd-vtx,.no-js .rd-shape,.no-js .model2__dot,.no-js .vb-row { opacity: 1 !important; transform: none !important; }
 .no-js .viz-draw { stroke-dashoffset: 0 !important; }
 .no-js .model2__stage::before { transform: none !important; }
 .no-js .pm-pulse { display: none; }
+
+/* Gold dot-matrix background (for otherwise-flat sections) */
+.tex-dots { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(211,166,69,0.12) 1.2px, transparent 1.5px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 78% at 50% 42%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 78% at 50% 42%, #000 30%, transparent 100%); }
+
+/* Radar intro row: center-aligned + caption to balance the copy */
+@media (min-width: 900px) { .svc-intro--viz { align-items: center; } }
+.svc-intro--viz .viz-radar { max-width: 480px; }
+.viz-caption { text-align: center; color: var(--fg-dim); font-size: .9rem; line-height: 1.55; margin: 1.4rem auto 0; padding-top: 1.3rem; border-top: 1px solid var(--border); max-width: 34ch; }
+
+/* "Strategy brief" deliverable graphic */
+.viz-brief { width: 100%; height: auto; max-width: 440px; margin-inline: auto; display: block; }
+.vb-row { opacity: 0; transform: translateX(-8px); }
+.reveal.is-in .vb-row { animation: vbRow .5s var(--ease) forwards; }
+@keyframes vbRow { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .vb-row { opacity: 1 !important; transform: none !important; animation: none !important; } }
