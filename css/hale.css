@@ -928,3 +928,70 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 .svc-band__links a { display: inline-flex; align-items: center; gap: .45em; padding: .5em 1.05em; border: 1px solid var(--border); border-radius: 999px; color: var(--fg); font-size: .85rem; font-weight: 500; transition: border-color .2s var(--ease), color .2s var(--ease), background .2s var(--ease); }
 .svc-band__links a::after { content: "\2192"; color: var(--gold); }
 .svc-band__links a:hover { border-color: var(--gold); color: var(--gold); background: rgba(211,166,69,.06); }
+
+/* ============================================================
+   SERVICE-PAGE DATA VISUALS (charts / animated graphics)
+   ============================================================ */
+.page-hero--split .page-hero__inner { display: grid; gap: clamp(2rem,5vw,3.5rem); }
+@media (min-width: 940px) { .page-hero--split .page-hero__inner { grid-template-columns: 1.05fr .95fr; align-items: center; } .page-hero--split .page-hero__text { max-width: none; } }
+.page-hero__viz { position: relative; }
+.viz-matrix, .viz-radar { width: 100%; height: auto; max-width: 440px; margin-inline: auto; display: block; overflow: visible; }
+.viz-frame { border: 1px solid var(--border); border-radius: var(--radius-lg,20px); background: rgba(15,15,15,.45); backdrop-filter: blur(6px); padding: clamp(1.4rem,3vw,2.1rem); }
+.viz-label { fill: var(--fg-dim); font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: .1em; }
+.viz-label--gold { fill: var(--gold); }
+
+.viz-draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.reveal.is-in .viz-draw { animation: vizDraw 1s ease forwards; }
+@keyframes vizDraw { to { stroke-dashoffset: 0; } }
+@keyframes vizFade { to { opacity: 1; } }
+@keyframes vizPop { to { opacity: 1; transform: scale(1); } }
+
+/* Priority matrix */
+.pm-zone { opacity: 0; }
+.reveal.is-in .pm-zone { animation: vizFade .8s ease .35s forwards; }
+.pm-dot { opacity: 0; transform: scale(0); transform-box: fill-box; transform-origin: center; }
+.reveal.is-in .pm-dot { animation: vizPop .5s cubic-bezier(.2,.8,.3,1.5) forwards; }
+.pm-hot { filter: drop-shadow(0 0 6px hsl(41 62% 55% / .6)); }
+.pm-pulse { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.reveal.is-in .pm-pulse { animation: pmPulse 2.6s ease-out 1.5s infinite; }
+@keyframes pmPulse { 0% { r: 6; opacity: .5; } 100% { r: 22; opacity: 0; } }
+
+/* Diagnostic radar */
+.rd-ring, .rd-spoke, .rd-vtx { opacity: 0; }
+.reveal.is-in .rd-ring { animation: vizFade .7s ease forwards; }
+.reveal.is-in .rd-spoke { animation: vizFade .7s ease .2s forwards; }
+.reveal.is-in .rd-vtx { animation: vizFade .5s ease 1s forwards; }
+.rd-shape { opacity: 0; transform: scale(.3); transform-box: fill-box; transform-origin: center; filter: drop-shadow(0 0 10px hsl(41 62% 55% / .35)); }
+.reveal.is-in .rd-shape { animation: rdGrow .9s cubic-bezier(.2,.7,.3,1) .4s forwards; }
+@keyframes rdGrow { to { opacity: 1; transform: scale(1); } }
+
+/* Process stepper (model2) — dots pop + line draws */
+.model2__dot { opacity: 0; transform: scale(.4); transform-origin: center; }
+.reveal.is-in .model2__dot { animation: vizPop .45s var(--ease) forwards; }
+.model2__stage:nth-child(1) .model2__dot { animation-delay: .05s; }
+.model2__stage:nth-child(2) .model2__dot { animation-delay: .17s; }
+.model2__stage:nth-child(3) .model2__dot { animation-delay: .29s; }
+.model2__stage:nth-child(4) .model2__dot { animation-delay: .41s; }
+.model2__stage:nth-child(5) .model2__dot { animation-delay: .53s; }
+.model2__stage:nth-child(6) .model2__dot { animation-delay: .65s; }
+@media (min-width: 900px) {
+  .model2__stage::before { transform: scaleX(0); transform-origin: left; }
+  .reveal.is-in .model2__stage::before { animation: lineGrow .5s var(--ease) forwards; }
+  .model2__stage:nth-child(1)::before { animation-delay: .2s; }
+  .model2__stage:nth-child(2)::before { animation-delay: .32s; }
+  .model2__stage:nth-child(3)::before { animation-delay: .44s; }
+  .model2__stage:nth-child(4)::before { animation-delay: .56s; }
+  .model2__stage:nth-child(5)::before { animation-delay: .68s; }
+}
+@keyframes lineGrow { to { transform: scaleX(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pm-zone,.pm-dot,.rd-ring,.rd-spoke,.rd-vtx,.rd-shape,.model2__dot { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .viz-draw { stroke-dashoffset: 0 !important; animation: none; }
+  .model2__stage::before { transform: none !important; animation: none; }
+  .pm-pulse { display: none; }
+}
+.no-js .pm-zone,.no-js .pm-dot,.no-js .rd-ring,.no-js .rd-spoke,.no-js .rd-vtx,.no-js .rd-shape,.no-js .model2__dot { opacity: 1 !important; transform: none !important; }
+.no-js .viz-draw { stroke-dashoffset: 0 !important; }
+.no-js .model2__stage::before { transform: none !important; }
+.no-js .pm-pulse { display: none; }
