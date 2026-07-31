@@ -1070,4 +1070,4 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 @media (max-width: 640px) { .tabs-cta { justify-content: flex-start; } .tabs-cta .btn { width: 100%; justify-content: center; } }
 
 /* Industry "brands we've helped" cards: real client logos */
-.brand-card__logo { height: 38px; width: auto; max-width: 175px; object-fit: contain; object-position: left center; display: block; margin-bottom: 1.15rem; }
+.brand-card__logo { height: 38px; width: auto; max-width: 175px; object-fit: contain; object-position: left center; display: block; margin-bottom: 1.15rem; filter: brightness(0) invert(1); }
