@@ -1071,3 +1071,5 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 
 /* Industry "brands we've helped" cards: real client logos */
 .brand-card__logo { height: 38px; width: auto; max-width: 175px; object-fit: contain; object-position: left center; display: block; margin-bottom: 1.15rem; filter: brightness(0) invert(1); }
+
+.brand-card__logo--color { filter: none; }
