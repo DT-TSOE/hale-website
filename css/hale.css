@@ -1089,3 +1089,11 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 .footer__legal { display: flex; flex-direction: column; gap: .3rem; text-align: right; }
 .footer__legal .fine { font-style: normal; }
 @media (max-width: 620px) { .footer__legal { text-align: left; } }
+
+/* Contact page: team locations map */
+.contact-map { margin-top: 1.9rem; }
+.contact-map__svg { width: 100%; height: auto; max-width: 440px; display: block; }
+.contact-map__cap { margin: .55rem 0 0; color: var(--fg-dim); font-size: var(--fs-sm); }
+.cm-pulse { animation: cmPulse 2.8s ease-out infinite; }
+@keyframes cmPulse { 0% { r: 4px; opacity: .6; } 70% { opacity: 0; } 100% { r: 15px; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cm-pulse { animation: none; opacity: .22; } }
