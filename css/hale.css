@@ -1084,3 +1084,8 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 .cs-card__stats { display: flex; gap: 1.8rem; margin: 1.15rem 0 .2rem; padding-top: 1.1rem; border-top: 1px solid var(--border); }
 .cs-card__stat b { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem,2.2vw,1.85rem); color: var(--gold); line-height: 1; }
 .cs-card__stat span { font-size: .68rem; color: var(--fg-dim); text-transform: uppercase; letter-spacing: .09em; margin-top: .35rem; display: block; }
+
+/* Footer legal block: address + copyright, right-aligned */
+.footer__legal { display: flex; flex-direction: column; gap: .3rem; text-align: right; }
+.footer__legal .fine { font-style: normal; }
+@media (max-width: 620px) { .footer__legal { text-align: left; } }
