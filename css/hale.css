@@ -1093,7 +1093,7 @@ a.svc-card:hover { transform: translateY(-3px); border-color: var(--gold); }
 /* Contact page: team locations map */
 .contact-map { margin-top: 1rem; }
 .contact-map__svg { width: 100%; height: auto; max-width: 280px; display: block; }
-.contact-map__cap { margin: .5rem 0 0; color: var(--fg-dim); font-size: calc(var(--fs-sm) - 1px); }
+.contact-map__cap { margin: 0 0 .55rem; color: var(--fg-dim); font-size: calc(var(--fs-sm) - 1px); }
 .cm-pulse { animation: cmPulse 2.8s ease-out infinite; }
 @keyframes cmPulse { 0% { r: 4px; opacity: .6; } 70% { opacity: 0; } 100% { r: 15px; opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .cm-pulse { animation: none; opacity: .22; } }
